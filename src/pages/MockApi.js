@@ -78,16 +78,21 @@ export default function GetCard() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <input placeholder="Add name" onChange={handleChange} value={input} />
-                <button type="submit">Add</button>
+            <form onSubmit={handleSubmit} className="form-inline">
+                <div className="my-4 mx-auto">
+                    <input placeholder="Add name" onChange={handleChange} value={input} className="form-control mr-2"/>
+                    <button type="submit" className="btn btn-success">Add</button>
+                </div>
             </form>
 
             <Container
                 style={{
                     display: "flex",
                     flexDirection: "row",
-                    flexWrap: "wrap"
+                    flexWrap: "wrap",
+                    fontSize: "0.8rem",
+                    fontWeight: "100",
+                    lineHeight: "1.5"
                 }}
             >
                 {data.map((item, index) => {
@@ -99,6 +104,7 @@ export default function GetCard() {
                                     alignItems: "center"
                                 }}
                             >
+                                <CardTitle>{item.id}</CardTitle>
                                 <CardImg
                                     top
                                     style={{ width: "100px" }}
@@ -106,12 +112,12 @@ export default function GetCard() {
                                     alt="Card image cap"
                                 />
                                 <CardBody>
-                                    <CardTitle>{item.id}</CardTitle>
+
                                     <CardSubtitle>{item.name}</CardSubtitle>
                                     <CardSubtitle>{item.country}</CardSubtitle>
                                     <CardSubtitle>{item.city}</CardSubtitle>
-                                    <Button onClick={() => toggle(item.id)}>Edit</Button>
-                                    <Button className="ml-2"
+                                    <Button className="btn-success" onClick={() => toggle(item.id)} size="sm">Edit</Button>
+                                    <Button className="ml-2" size="sm"
                                         onClick={() => handleDelete(item.id)}
                                         style={{ background: "red" }}
                                     >
