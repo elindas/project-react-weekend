@@ -1,32 +1,31 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-import React, { Component } from 'react'
-import axios from 'axios'
+export default function Profile() {
+  const [data, setData] = useState([]);
 
-export default class Profile extends Component {
-    constructor(props) {
-        super(props)
+  useEffect(() => {
+    getData();
+  }, []);
 
-        this.state = {
-            data: [],
-            input: ""
-        }
-    }
+  const getData = async () => {
+    const response1 = await axios.get(
+      "https://api.github.com/users/hendrik1914"
+    );
+    const response2 = await axios.get("https://api.github.com/users/elindas");
 
-    componentDidMount() {
-        this.getData()
-    }
+    setData([response1.data, response2.data]);
+  };
 
-    handleChange = e => {
-        this.setState({ input })
-    }
-
-
-    render() {
-        return (
+  return (
             <div>
-                
-            </div>
-        )
-    }
+                {data.map((item, index) =>
+                    <div key={index} >
+                        <div >No : {item.id}</div>
+                        <div >Login : {item.login}</div>
+                        <div >Url : {item.html_url}</div>
+                    </div>
+                    )}
+            </div> 
+          )                 
 }
-
