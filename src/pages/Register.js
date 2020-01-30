@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form, FormGroup, Label, Input, } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
+import './register.css'
 
 class Register extends Component {
     constructor(props) {
@@ -29,39 +30,43 @@ class Register extends Component {
 
         localStorage.setItem("user", JSON.stringify(user))
         localStorage.setItem("status", true)
-        
+
         this.props.history.push("/signin")
     }
 
 
     render() {
-        
+
         return (
             <div>
-                <h2>Sign Up</h2>
-                <div className="signin-form">
-                    <Form onSubmit={this.handleSubmit}>
-                        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                            <Label for="exampleUsername" className="mr-sm-2">Name</Label>
-                            <Input type="text" name="username" id="exampleName" placeholder="input username"
-                                onChange={this.handleChange}
-                                value={this.state.username} />
-                        </FormGroup>
-                        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                            <Label for="exampleEmail" className="mr-sm-2">Email</Label>
-                            <Input type="email" name="email" id="exampleEmail" placeholder="input email"
-                                onChange={this.handleChange}
-                                value={this.state.email} />
-                        </FormGroup>
-                        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                            <Label for="examplePassword" className="mr-sm-2">Password</Label>
-                            <Input type="password" name="password" id="examplePassword" placeholder="password"
-                                onChange={this.handleChange}
-                                value={this.state.password} />
-                        </FormGroup>
-                        <br />
-                        <Button>Submit</Button>
-                    </Form>
+                <div className="wrapper">
+                    <div className="signin-form">
+                        
+                        <h2 className="form-title">Sign Up</h2>
+                        
+                        <Form className="form-signin" onSubmit={this.handleSubmit}>
+                            <FormGroup className="mb-2 mr-sm-2 mb-sm-2">
+                                <Label for="exampleUsername" className="mr-sm-2">Name</Label>
+                                <Input className="form-control" type="text" name="username" id="exampleName" placeholder="input username"
+                                    onChange={this.handleChange}
+                                    value={this.state.username} />
+                            </FormGroup>
+                            <FormGroup className="mb-2 mr-sm-2 mb-sm-2">
+                                <Label for="exampleEmail" className="mr-sm-2">Email</Label>
+                                <Input className="form-control" type="email" name="email" id="exampleEmail" placeholder="input email"
+                                    onChange={this.handleChange}
+                                    value={this.state.email} />
+                            </FormGroup>
+                            <FormGroup className="mb-2 mr-sm-2 mb-sm-2">
+                                <Label for="examplePassword" className="mr-sm-2">Password</Label>
+                                <Input className="form-control" type="password" name="password" id="examplePassword" placeholder="input password"
+                                    onChange={this.handleChange}
+                                    value={this.state.password} />
+                            </FormGroup>
+                            <br />
+                            <Button className="btn btn-lg btn-primary btn-block" >Submit</Button>
+                        </Form>
+                    </div>
                 </div>
             </div>
 
